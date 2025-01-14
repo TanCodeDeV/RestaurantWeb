@@ -38,7 +38,51 @@ const Body = () => {
     <div className="body">
       <div className="search">Search</div>
       <div className="resturant-container">
-        <ResturantCard resData={resData} />
+        <ResturantCard
+          resData={resData.card.gridElements.infoWithStyle.restaurants[0]}
+        />
+        <ResturantCard
+          resData={resData.card.gridElements.infoWithStyle.restaurants[1]}
+        />
+        <ResturantCard
+          resData={resData.card.gridElements.infoWithStyle.restaurants[2]}
+        />
+        <ResturantCard
+          resData={resData.card.gridElements.infoWithStyle.restaurants[3]}
+        />
+        <ResturantCard
+          resData={resData.card.gridElements.infoWithStyle.restaurants[4]}
+        />
+        <ResturantCard
+          resData={resData.card.gridElements.infoWithStyle.restaurants[5]}
+        />
+        <ResturantCard
+          resData={resData.card.gridElements.infoWithStyle.restaurants[6]}
+        />
+        <ResturantCard
+          resData={resData.card.gridElements.infoWithStyle.restaurants[7]}
+        />
+        <ResturantCard
+          resData={resData.card.gridElements.infoWithStyle.restaurants[8]}
+        />
+        <ResturantCard
+          resData={resData.card.gridElements.infoWithStyle.restaurants[9]}
+        />
+        <ResturantCard
+          resData={resData.card.gridElements.infoWithStyle.restaurants[10]}
+        />
+        <ResturantCard
+          resData={resData.card.gridElements.infoWithStyle.restaurants[11]}
+        />
+        <ResturantCard
+          resData={resData.card.gridElements.infoWithStyle.restaurants[12]}
+        />
+        <ResturantCard
+          resData={resData.card.gridElements.infoWithStyle.restaurants[13]}
+        />
+        <ResturantCard
+          resData={resData.card.gridElements.infoWithStyle.restaurants[14]}
+        />
       </div>
     </div>
   );
@@ -46,38 +90,28 @@ const Body = () => {
 
 const ResturantCard = (props) => {
   const { resData } = props;
+  const {
+    name,
+    cuisines,
+    cloudinaryImageId,
+    costForTwo,
+    avgRating,
+    deliveryTime,
+  } = resData?.info; // option chaining resData?.info
   return (
     <div className="res-card">
       <img
         className="res-img"
         src={
           "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_366/" +
-          resData.card.gridElements.infoWithStyle.restaurants[0].info
-            .cloudinaryImageId
+          resData.info.cloudinaryImageId
         }
       ></img>
-      <h3>
-        {resData.card.gridElements.infoWithStyle.restaurants[0].info.name}
-      </h3>
-      <h4>
-        {resData.card.gridElements.infoWithStyle.restaurants[0].info.cuisines.join(
-          ", "
-        )}
-      </h4>
-      <h4>
-        {resData.card.gridElements.infoWithStyle.restaurants[0].info.costForTwo}
-      </h4>
-      <h4>
-        {resData.card.gridElements.infoWithStyle.restaurants[0].info.avgRating}{" "}
-        ⭐
-      </h4>
-      <h4>
-        {
-          resData.card.gridElements.infoWithStyle.restaurants[0].info.sla
-            .deliveryTime
-        }{" "}
-        Minutes
-      </h4>
+      <h3>{name}</h3>
+      <h4>{cuisines.join(", ")}</h4>
+      <h4>{costForTwo}</h4>
+      <h4>{avgRating} ⭐</h4>
+      <h4>{deliveryTime} Minutes</h4>
     </div>
   );
 };
