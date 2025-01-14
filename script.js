@@ -38,51 +38,11 @@ const Body = () => {
     <div className="body">
       <div className="search">Search</div>
       <div className="resturant-container">
-        <ResturantCard
-          resData={resData.card.gridElements.infoWithStyle.restaurants[0]}
-        />
-        <ResturantCard
-          resData={resData.card.gridElements.infoWithStyle.restaurants[1]}
-        />
-        <ResturantCard
-          resData={resData.card.gridElements.infoWithStyle.restaurants[2]}
-        />
-        <ResturantCard
-          resData={resData.card.gridElements.infoWithStyle.restaurants[3]}
-        />
-        <ResturantCard
-          resData={resData.card.gridElements.infoWithStyle.restaurants[4]}
-        />
-        <ResturantCard
-          resData={resData.card.gridElements.infoWithStyle.restaurants[5]}
-        />
-        <ResturantCard
-          resData={resData.card.gridElements.infoWithStyle.restaurants[6]}
-        />
-        <ResturantCard
-          resData={resData.card.gridElements.infoWithStyle.restaurants[7]}
-        />
-        <ResturantCard
-          resData={resData.card.gridElements.infoWithStyle.restaurants[8]}
-        />
-        <ResturantCard
-          resData={resData.card.gridElements.infoWithStyle.restaurants[9]}
-        />
-        <ResturantCard
-          resData={resData.card.gridElements.infoWithStyle.restaurants[10]}
-        />
-        <ResturantCard
-          resData={resData.card.gridElements.infoWithStyle.restaurants[11]}
-        />
-        <ResturantCard
-          resData={resData.card.gridElements.infoWithStyle.restaurants[12]}
-        />
-        <ResturantCard
-          resData={resData.card.gridElements.infoWithStyle.restaurants[13]}
-        />
-        <ResturantCard
-          resData={resData.card.gridElements.infoWithStyle.restaurants[14]}
-        />
+        {resData.card.gridElements.infoWithStyle.restaurants.map(
+          (restaurant, index) => (
+            <ResturantCard key={index} resData={restaurant} />
+          )
+        )}
       </div>
     </div>
   );
