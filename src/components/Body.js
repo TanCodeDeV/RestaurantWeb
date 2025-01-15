@@ -64,7 +64,7 @@ const Body = () => {
             setListofResturant(searchBackList);
           }}
         />
-        <button
+        {/* <button
           className="search-button"
           onClick={() => {
             console.log(searchText);
@@ -78,7 +78,7 @@ const Body = () => {
           }}
         >
           Search
-        </button>
+        </button> */}
       </div>
 
       <div className="mainH">

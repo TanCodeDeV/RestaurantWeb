@@ -69,6 +69,7 @@ body {
 
 .search-box {
   width: 800px;
+  height: 30px;
   margin-left: 160px;
   border-radius: 5px;
   border: 2px solid gray;
