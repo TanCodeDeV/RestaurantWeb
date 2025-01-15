@@ -6,6 +6,30 @@ const resList = resData.card.gridElements.infoWithStyle.restaurants;
 
 const Body = () => {
   const [ListofResturant, setListofResturant] = useState(resList);
+
+  const fetchData = async () => {
+    const data = await fetch(
+      "https://www.swiggy.com/mapi/restaurants/list/v5?offset=0&is-seo-homepage-enabled=true&lat=18.6633744131923&lng=73.7839624285698&carousel=true&third_party_vendor=1"
+    );
+
+    const jsonData = await data.json();
+    console.log(jsonData);
+    // let apiList =
+    //   jsonData.data.cards[1].card.card.gridElements.infoWithStyle.restaurants;
+    console.log(
+      jsonData.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
+    );
+    let apiList =
+      jsonData?.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants || [];
+
+    setListofResturant(apiList);
+
+    console.log("after fetch setlist");
+  };
+
+  fetchData();
+
   return (
     <div className="body">
       <div className="search">Search</div>
