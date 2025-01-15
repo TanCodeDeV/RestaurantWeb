@@ -6,7 +6,8 @@ import Shimmer from "./Shimmer";
 const resList = resData.card.gridElements.infoWithStyle.restaurants;
 
 const Body = () => {
-  const [ListofResturant, setListofResturant] = useState([]);
+  //state variables
+  const [ListofResturant, setListofResturant] = useState(resList);
 
   useEffect(() => {
     fetchData();
@@ -33,6 +34,7 @@ const Body = () => {
     console.log("after fetch setlist");
   };
 
+  //conditional rednering:- Rendering based on some condition as below is know as conditional redndreing
   if (ListofResturant.length === 0) {
     return <Shimmer></Shimmer>;
   }

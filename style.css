@@ -5,6 +5,7 @@ body {
   display: flex;
   flex-direction: column;
 }
+/*************HEADER STYLE******************************/
 
 .logo {
   height: 100px;
@@ -28,6 +29,22 @@ body {
   margin: 10px;
   font-size: 25px;
   list-style-type: none;
+}
+
+.login-button {
+  width: 80px;
+  height: 30px;
+  margin-top: 20px;
+  margin-right: 10px;
+  padding: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 1px solid gray;
+}
+
+.login-button:hover {
+  background-color: rgb(243, 226, 248);
+  border: 1px solid black;
 }
 
 /*******************FOOTER CSS BELOW*****************/
