@@ -1,11 +1,16 @@
 import ResturantCard from "./ResturantCard";
 import resData from "../utils/mockData";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Shimmer from "./Shimmer";
 
 const resList = resData.card.gridElements.infoWithStyle.restaurants;
 
 const Body = () => {
-  const [ListofResturant, setListofResturant] = useState(resList);
+  const [ListofResturant, setListofResturant] = useState([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const fetchData = async () => {
     const data = await fetch(
@@ -28,7 +33,9 @@ const Body = () => {
     console.log("after fetch setlist");
   };
 
-  fetchData();
+  if (ListofResturant.length === 0) {
+    return <Shimmer></Shimmer>;
+  }
 
   return (
     <div className="body">
