@@ -3,11 +3,15 @@ import resData from "../utils/mockData";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 
+//whenever state ariable changes recat triggers reconcillation cycle(re-renders component)
+
 const resList = resData.card.gridElements.infoWithStyle.restaurants;
 
 const Body = () => {
   //state variables
   const [ListofResturant, setListofResturant] = useState(resList);
+  const [ListFilterResturant, setListFilterResturant] = useState(resList);
+  const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
     fetchData();
@@ -30,18 +34,53 @@ const Body = () => {
         ?.restaurants || [];
 
     setListofResturant(apiList);
+    setListFilterResturant(apiList);
 
     console.log("after fetch setlist");
   };
 
   //conditional rednering:- Rendering based on some condition as below is know as conditional redndreing
-  if (ListofResturant.length === 0) {
-    return <Shimmer></Shimmer>;
-  }
-
+  // if (ListofResturant.length === 0) {
+  //   return <Shimmer></Shimmer>;
+  // }
+  // console.log("Hello from Boday");
   return (
     <div className="body">
-      <div className="search">Search</div>
+      <div className="search-container">
+        <input
+          type="text"
+          className="search-box"
+          placeholder="Search"
+          value={searchText}
+          onChange={(e) => {
+            let searchBackText = e.target.value;
+            setSearchText(searchBackText);
+
+            let searchBackList = ListFilterResturant.filter((res) => {
+              return res.info.name
+                .toLowerCase()
+                .includes(searchBackText.toLowerCase());
+            });
+            setListofResturant(searchBackList);
+          }}
+        />
+        <button
+          className="search-button"
+          onClick={() => {
+            console.log(searchText);
+            let searchList = ListofResturant.filter((res) => {
+              return res.info.name
+                .toLowerCase()
+                .includes(searchText.toLowerCase());
+            });
+
+            setListofResturant(searchList);
+          }}
+        >
+          Search
+        </button>
+      </div>
+
       <div className="mainH">
         <h2>Top restaurant chains in Pune</h2>
       </div>
