@@ -8,11 +8,18 @@ import Shimmer from "./Shimmer";
 const resList = resData.card.gridElements.infoWithStyle.restaurants;
 
 const Body = () => {
-  //state variables
+  //state variables=> create on top
+  //useStae is used to create local state variable inside function hence always call it inside function component.
+  //never create it inside if-else for lopp or normal function, only inside and top of functional cmponent
+  
   const [ListofResturant, setListofResturant] = useState(resList);
   const [ListFilterResturant, setListFilterResturant] = useState(resList);
   const [searchText, setSearchText] = useState("");
+  const [toggleButton, settoggleButton] = useState(1);
+  const [toggleButton2, settoggleButton2] = useState(1);
 
+  //is no dependancy array ![] => the useEffect is rendedred every time
+  //if empty dependancy array => useEffect is called on inital render(just once)
   useEffect(() => {
     fetchData();
   }, []);
@@ -89,10 +96,16 @@ const Body = () => {
           id="top-rated"
           className="button"
           onClick={() => {
-            let topRatedList = ListofResturant.filter(
-              (res) => res.info.avgRating > 4.3
-            );
-            setListofResturant(topRatedList);
+            if (toggleButton) {
+              let topRatedList = ListofResturant.filter(
+                (res) => res.info.avgRating > 4.3
+              );
+              setListofResturant(topRatedList);
+              settoggleButton(0);
+            } else {
+              setListofResturant(ListFilterResturant);
+              settoggleButton(1);
+            }
           }}
         >
           Top Rated
@@ -101,8 +114,14 @@ const Body = () => {
           id="veg-res"
           className="button"
           onClick={() => {
-            let pureVegList = ListofResturant.filter((res) => res.info.veg);
-            setListofResturant(pureVegList);
+            if (toggleButton2) {
+              let pureVegList = ListofResturant.filter((res) => res.info.veg);
+              setListofResturant(pureVegList);
+              settoggleButton2(0);
+            } else {
+              setListofResturant(ListFilterResturant);
+              settoggleButton2(1);
+            }
           }}
         >
           Pure Veg 💚
