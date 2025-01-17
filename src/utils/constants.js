@@ -6,3 +6,6 @@ export const CLOUDINARY_URL =
 
 export const LOGO_URL =
   "https://static.vecteezy.com/system/resources/previews/013/810/890/original/restaurant-food-chef-logo-design-planet-food-catering-logo-template-online-order-food-logo-icon-symbol-vector.jpg";
+
+
+  export const MENU_URL="https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=18.6633744131923&lng=73.7839624285698&restaurantId=";

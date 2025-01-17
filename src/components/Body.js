@@ -2,6 +2,7 @@ import ResturantCard from "./ResturantCard";
 import resData from "../utils/mockData";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 //whenever state ariable changes recat triggers reconcillation cycle(re-renders component)
 
@@ -11,7 +12,7 @@ const Body = () => {
   //state variables=> create on top
   //useStae is used to create local state variable inside function hence always call it inside function component.
   //never create it inside if-else for lopp or normal function, only inside and top of functional cmponent
-  
+
   const [ListofResturant, setListofResturant] = useState(resList);
   const [ListFilterResturant, setListFilterResturant] = useState(resList);
   const [searchText, setSearchText] = useState("");
@@ -155,9 +156,22 @@ const Body = () => {
           Fast Delivery
         </button>
       </div>
+      {/* <div className="resturant-container">
+        {ListofResturant.map((restaurant, index) => (
+          <link>
+            <ResturantCard key={restaurant.info.id} resData={restaurant} />
+          </link>
+        ))}
+      </div> */}
       <div className="resturant-container">
         {ListofResturant.map((restaurant, index) => (
-          <ResturantCard key={index} resData={restaurant} />
+          <Link
+            to={`/resturants/${restaurant.info.id}`}
+            key={restaurant.info.id}
+            style={{ color: "inherit", textDecoration: "none" }}
+          >
+            <ResturantCard resData={restaurant} />
+          </Link>
         ))}
       </div>
     </div>
