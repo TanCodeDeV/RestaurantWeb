@@ -182,45 +182,52 @@ h5 {
 /***************RESU MENU*****************************/
 
 .res-menu {
-  max-width: 600px;
+  max-width: 700px;
   margin: 50px auto;
-  padding: 20px;
-  border: 3px solid #ec1186;
-  border-radius: 10px;
-  background-color: rgb(244, 241, 241);
-  text-align: center;
-  font-family: Arial, sans-serif;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 30px;
+  border: 5px solid #ec1186;
+  border-radius: 15px;
+  background-color: #fff8f9;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  font-family: "Georgia", serif;
 }
 
 .res-menu-header {
-  margin-bottom: 20px;
+  text-align: center;
+  margin-bottom: 30px;
 }
 
 .res-name {
-  font-size: 1.8rem;
-  color: #7711ec;
+  font-size: 2rem;
+  color: #000000;
+  font-weight: bold;
+  text-transform: uppercase;
   margin: 0;
 }
 
 .res-details {
-  font-size: 1rem;
+  font-size: 1.2rem;
   color: #555;
-  margin: 5px 0;
+  margin: 10px 0;
 }
 
 .res-cuisines {
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: #333;
   margin: 5px 0;
+  font-style: italic;
 }
 
 .menu-title {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   color: #000;
-  margin-top: 20px;
-  margin-bottom: 10px;
-  text-decoration: underline;
+  text-align: center;
+  margin-left: 500px;
+  margin: 20px auto; /* Center aligns the element horizontally */
+  text-transform: uppercase;
+  border-bottom: 2px solid #ec1186;
+  display: inline-block;
+  padding-bottom: 5px;
 }
 
 .menu-list {
@@ -230,9 +237,16 @@ h5 {
 }
 
 .menu-item {
-  font-size: 1rem;
+  font-size: 1.2rem;
   color: #444;
-  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px dashed #ccc;
+}
+
+.menu-item:last-child {
+  border-bottom: none;
 }
 
 .dish-name {
@@ -241,6 +255,20 @@ h5 {
 }
 
 .dish-price {
-  font-weight: normal;
-  color: #7711ec;
+  font-weight: bold;
+  color: #ec1186;
+}
+
+@media (max-width: 768px) {
+  .res-menu {
+    padding: 20px;
+  }
+
+  .res-name {
+    font-size: 1.8rem;
+  }
+
+  .menu-item {
+    font-size: 1rem;
+  }
 }
