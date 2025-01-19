@@ -9,11 +9,7 @@ const ContactUS = () => {
         <li>Email: tanMe@gmail.com</li>
         <User name={"Tanmayi Bhave"} add={"Pune"} email={"TanR@gmail.com"} />
 
-        <UserClass
-          name={"Neeraj Ranade"}
-          add={"Pune/Austrelia"}
-          email={"NeerajHRanade@gmail.com"}
-        />
+        <UserClass name={"Joker"} add={"Pune"} email={"joker@234"} />
       </ul>
     </div>
   );
