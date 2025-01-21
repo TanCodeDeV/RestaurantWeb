@@ -3,6 +3,7 @@ import resData from "../utils/mockData";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/Hooks/useOnlineStatus";
 
 //whenever state ariable changes recat triggers reconcillation cycle(re-renders component)
 
@@ -52,6 +53,15 @@ const Body = () => {
   //   return <Shimmer></Shimmer>;
   // }
   // console.log("Hello from Boday");
+
+  const onlineStatus = useOnlineStatus();
+
+  console.log("Your Online status is: " + onlineStatus);
+
+  if (onlineStatus === false) {
+    return <h1>You are Offline!! Kindly Check your internet connection!!!!</h1>;
+  }
+
   return (
     <div className="body">
       <div className="search-container">
