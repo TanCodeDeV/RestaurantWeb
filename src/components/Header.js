@@ -1,7 +1,9 @@
 import { LOGO_URL } from "../utils/constants";
-import { useState } from "react";
+import { useState, lazy, Suspense } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/Hooks/useOnlineStatus";
+
+
 
 const Header = () => {
   const [loginButton, setloginButton] = useState("login");
@@ -23,6 +25,9 @@ const Header = () => {
           </li>
           <li>
             <Link to="/contact">Contact Us</Link>
+          </li>
+          <li>
+            <Link to="/instaOrder">Instant Delivery</Link>
           </li>
           <li>Cart</li>
           <button
