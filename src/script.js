@@ -8,11 +8,9 @@ import AboutUS from "./components/AboutUS";
 import ContactUS from "./components/ContactUS";
 import ErrorPage from "./components/ErrorPage";
 import ResturantMenu from "./components/ResturantMenu";
-//import InstaDelivery from "./instatDelivaryComponent/instaDelivery";
+//import Store from "./instaStoreComponents/Store";
 
-const InstaDelivery = lazy(() =>
-  import("./instatDelivaryComponent/instaDelivery")
-);
+const Store = lazy(() => import("./instaStoreComponents/Store"));
 
 const AppLayout = () => {
   return (
@@ -48,10 +46,10 @@ const appRouter = createBrowserRouter([
         element: <ResturantMenu></ResturantMenu>,
       },
       {
-        path: "/instaOrder",
+        path: "/store",
         element: (
-          <Suspense fallback={<h3>Loading....</h3>}>
-            <InstaDelivery />
+          <Suspense fallback={<h1>Loading.....</h1>}>
+            <Store />
           </Suspense>
         ),
       },

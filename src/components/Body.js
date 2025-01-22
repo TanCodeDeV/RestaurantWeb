@@ -49,9 +49,9 @@ const Body = () => {
   };
 
   //conditional rednering:- Rendering based on some condition as below is know as conditional redndreing
-  // if (ListofResturant.length === 0) {
-  //   return <Shimmer></Shimmer>;
-  // }
+  if (ListofResturant.length === 0) {
+    return <Shimmer></Shimmer>;
+  }
   // console.log("Hello from Boday");
 
   const onlineStatus = useOnlineStatus();
@@ -64,10 +64,10 @@ const Body = () => {
 
   return (
     <div className="body">
-      <div className="search-container">
+      <div className="search-container m-4 p-4 ml-[9rem]">
         <input
           type="text"
-          className="search-box"
+          className="search-box border-2 border-black w-2/3 h-9 rounded-md shadow-md"
           placeholder="Search"
           value={searchText}
           onChange={(e) => {
@@ -100,12 +100,14 @@ const Body = () => {
       </div>
 
       <div className="mainH">
-        <h2>Top restaurant chains in Pune</h2>
+        <h2 className="font-bold text-xl ml-[10rem] mb-4">
+          Top Restaurant Chains In Pune
+        </h2>
       </div>
-      <div className="button-container">
+      <div className="button-container flex ml-36">
         <button
           id="top-rated"
-          className="button"
+          className="button px-4 py-1 m-4 bg-gray-100  border-2 border-gray-500 rounded-lg  hover:bg-pink-100 hover:border-black"
           onClick={() => {
             if (toggleButton) {
               let topRatedList = ListofResturant.filter(
@@ -123,7 +125,7 @@ const Body = () => {
         </button>
         <button
           id="veg-res"
-          className="button"
+          className="button px-4 py-1 m-4 bg-gray-100 hover:bg-pink-100 hover:border-black border-2 border-gray-500 rounded-lg"
           onClick={() => {
             if (toggleButton2) {
               let pureVegList = ListofResturant.filter((res) => res.info.veg);
@@ -139,7 +141,7 @@ const Body = () => {
         </button>
         <button
           id="lesthn300"
-          className="button"
+          className="button px-4 py-1 m-4 bg-gray-100 hover:bg-pink-100 hover:border-black border-2 border-gray-500 rounded-lg"
           onClick={() => {
             let costFriendlyList = ListofResturant.filter((res) => {
               let costString = res.info.costForTwo;
@@ -154,7 +156,7 @@ const Body = () => {
         </button>
         <button
           id="fastDelivery"
-          className="button"
+          className="button px-4 py-1 m-4 bg-gray-100 hover:bg-pink-100 hover:border-black border-2 border-gray-500 rounded-lg"
           onClick={() => {
             let fastDeliveryList = ListofResturant.filter((res) => {
               let timeTaken = res.info.sla.deliveryTime;
@@ -173,7 +175,7 @@ const Body = () => {
           </link>
         ))}
       </div> */}
-      <div className="resturant-container">
+      <div className="resturant-container flex flex-wrap mx-4 px-4 place-content-center">
         {ListofResturant.map((restaurant, index) => (
           <Link
             to={`/resturants/${restaurant.info.id}`}

@@ -36,9 +36,10 @@ class UserClass extends React.Component {
     console.log("Render called");
     const { login, id } = this.state.userInfo;
     return (
-      <div className="user-contact">
+      <div className="user-contact border-2 border-pink-400 p-4 m-4">
         <h3>Count: {this.state.count}</h3>
         <button
+          className="button px-4 py-1 m-4 bg-gray-100  border-2 border-gray-500 rounded-lg  hover:bg-pink-100 hover:border-black"
           onClick={() => {
             this.setState({
               count: this.state.count + 1,
