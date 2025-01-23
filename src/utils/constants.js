@@ -12,3 +12,6 @@ export const LOGO_URL =
 
 export const MENU_URL =
   "https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=18.6633744131923&lng=73.7839624285698&restaurantId=";
+
+export const FOOD_ITEM_URL =
+  "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/";

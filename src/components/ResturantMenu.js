@@ -1,6 +1,7 @@
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import useResturantMenu from "../utils/Hooks/useResturantMenu";
+import ResturantCategory from "./ResturantCategory";
 
 const ResturantMenu = () => {
   const { resID } = useParams();
@@ -24,14 +25,25 @@ const ResturantMenu = () => {
       ?.card?.carousel || [];
 
   console.log("Restutant Menu card2:");
-  console.log(carousel);
+  console.log(resInfo?.cards?.[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
+
+  let menuItemList =
+    resInfo?.cards?.[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards || [];
+
+  const categoryItems = menuItemList.filter(
+    (category) =>
+      category.card?.card?.["@type"] ===
+      "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+  );
+
+  console.log(categoryItems);
 
   if (carousel === null) {
     return <Shimmer />;
   }
 
   return (
-    <div className="res-menu max-w-4xl mx-auto border-2 border-gray-300 bg-gray-200 rounded-lg shadow-md m-10 p-6">
+    <div className=" text-center res-menu max-w-4xl mx-auto border-2 border-gray-300 bg-gray-200 rounded-lg shadow-md m-10 p-6">
       {/* Restaurant Header */}
       <div className="res-menu-header text-center border-b border-gray-400 pb-4 mb-6">
         <h2 className="res-name text-2xl font-bold text-gray-800 mb-2">
@@ -49,23 +61,9 @@ const ResturantMenu = () => {
       <h3 className="menu-title text-xl font-semibold text-gray-800 mb-4 border-b border-gray-300 pb-2">
         Restaurant Menu
       </h3>
-
-      {/* Menu List */}
-      <ul className="menu-list space-y-4">
-        {carousel.map((resMen, index) => (
-          <li
-            key={index}
-            className="menu-item flex justify-between items-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300"
-          >
-            <span className="dish-name font-medium text-gray-800">
-              {resMen.dish.info.name}
-            </span>
-            <span className="dish-price text-gray-600 font-semibold">
-              ₹{resMen.dish.info.price / 100}
-            </span>
-          </li>
-        ))}
-      </ul>
+      {categoryItems.map((category) => (
+        <ResturantCategory data={category?.card?.card} />
+      ))}
     </div>
   );
 };
