@@ -6,6 +6,8 @@ const ResturantMenu = () => {
   const { resID } = useParams();
   console.log(resID);
   const resInfo = useResturantMenu(resID);
+  console.log("Restutant Menu card1:");
+  console.log(resInfo);
 
   if (resInfo === null) {
     return <Shimmer />;
@@ -14,10 +16,19 @@ const ResturantMenu = () => {
   const { name, cuisines, costForTwoMessage, sla } =
     resInfo?.cards[2]?.card?.card?.info;
 
-  const { carousel } =
-    resInfo.cards[5].groupedCard.cardGroupMap.REGULAR.cards[1].card.card;
+  // let { carousel } =
+  //   resInfo.cards[5].groupedCard.cardGroupMap.REGULAR.cards[1].card.card;
 
+  let carousel =
+    resInfo?.cards?.[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[1]?.card
+      ?.card?.carousel || [];
+
+  console.log("Restutant Menu card2:");
   console.log(carousel);
+
+  if (carousel === null) {
+    return <Shimmer />;
+  }
 
   return (
     <div className="res-menu max-w-4xl mx-auto border-2 border-gray-300 bg-gray-200 rounded-lg shadow-md m-10 p-6">

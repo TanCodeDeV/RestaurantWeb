@@ -1,4 +1,4 @@
-import ResturantCard from "./ResturantCard";
+import ResturantCard, { withAggreDiscount } from "./ResturantCard";
 import resData from "../utils/mockData";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
@@ -19,6 +19,8 @@ const Body = () => {
   const [searchText, setSearchText] = useState("");
   const [toggleButton, settoggleButton] = useState(1);
   const [toggleButton2, settoggleButton2] = useState(1);
+
+  const ResturantCardDiscount = withAggreDiscount(ResturantCard);
 
   //is no dependancy array ![] => the useEffect is rendedred every time
   //if empty dependancy array => useEffect is called on inital render(just once)
@@ -182,7 +184,11 @@ const Body = () => {
             key={restaurant.info.id}
             style={{ color: "inherit", textDecoration: "none" }}
           >
-            <ResturantCard resData={restaurant} />
+            {restaurant.info.aggregatedDiscountInfoV3?.header === "ITEMS" ? (
+              <ResturantCardDiscount resData={restaurant} />
+            ) : (
+              <ResturantCard resData={restaurant} />
+            )}
           </Link>
         ))}
       </div>

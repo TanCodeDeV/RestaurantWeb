@@ -26,4 +26,40 @@ const ResturantCard = (props) => {
   );
 };
 
+//higher oder component
+//input- restutant card
+//output-  resturant card with agree Discount
+
+// export const withAggreDiscount = (ResturantCard) => {
+//   // returnsd a component inside with agree discount
+//   return (props) => {
+//     //below is the component for agree discount card
+//     return (
+//       <div>
+//         <label className="absolute bg-red-500 text-white m-2 p-2 rounded-md">
+//           Discount
+//         </label>
+//         <ResturantCard {...props} />
+//       </div>
+//     );
+//   };
+// };
+
+export const withAggreDiscount = (ResturantCard) => {
+  return (props) => {
+    const discountInfo = props.resData.info.aggregatedDiscountInfoV3?.subHeader;
+
+    return (
+      <div>
+        {discountInfo && (
+          <div className="discount-label absolute bg-red-500 text-white m-2 p-2 rounded-md">
+            {"ITEMS " + discountInfo}
+          </div>
+        )}
+        <ResturantCard {...props} />
+      </div>
+    );
+  };
+};
+
 export default ResturantCard;
